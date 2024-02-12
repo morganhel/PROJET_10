@@ -23,8 +23,6 @@ const EventList = () => {
   })
   .slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
 
-  console.log(filteredEvents);
-
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
