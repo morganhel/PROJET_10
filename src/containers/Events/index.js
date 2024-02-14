@@ -21,6 +21,7 @@ const EventList = () => {
     }
     return false;
   })
+  // ajout fonction filter pour afficher les événements filtrés
   .slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
 
   const changeType = (evtType) => {

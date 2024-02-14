@@ -9,22 +9,27 @@ const Slider = () => {
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
-  );
+    // classement par ordre décroissant
+  ); 
+
   const nextCard = () => {
-      setTimeout(
-        () => setIndex(index < byDateDesc.length -1 ? index + 1 : 0), // modif -1
-        5000
+    setTimeout(
+      () => setIndex(index < byDateDesc.length -1 ? index + 1 : 0),
+      5000
     );
   };
+  // on enlève 1 pour ne pas dépasser la longueur du tableau
+
   useEffect(() => {
     nextCard();
   });
+
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
         <>
           <div
-            key={event.id}
+            key={event.title}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -43,9 +48,11 @@ const Slider = () => {
               {byDateDesc.map((e, radioIdx) => (
                 <input
                   key={e.id}
+                  // key unique
                   type="radio"
                   name="radio-button"
-                  checked={index === radioIdx}  // remplacer idx par index
+                  checked={index === radioIdx}  // remplace idx par index (celui de la slide active)
+                  readOnly // erreur console, gestionnaire onChange
                 />
               ))}
             </div>
