@@ -122,7 +122,7 @@ const Page = () => {
           title={last.title}
           date={new Date(last.date)}
           small
-          label
+          label={last.type}
         />
         )
         // on affiche le dernier évènement

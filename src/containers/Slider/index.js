@@ -12,9 +12,11 @@ const Slider = () => {
     // classement par ordre décroissant
   ); 
 
+  const l =byDateDesc?.length
+
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length -1 ? index + 1 : 0),
+      () => setIndex(index < l-1 ? index + 1 : 0),
       5000
     );
   };
@@ -27,9 +29,8 @@ const Slider = () => {
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
-        <>
+        <div key={event.title}>
           <div
-            key={event.title}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -47,7 +48,7 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((e, radioIdx) => (
                 <input
-                  key={e.id}
+                  key={`${e.title}`}
                   // key unique
                   type="radio"
                   name="radio-button"
@@ -57,7 +58,7 @@ const Slider = () => {
               ))}
             </div>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );
